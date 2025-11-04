@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dafzx Joki & Store v3.0</title>
+  <title>Dafzx Joki & Store v3.1 (Fixed)</title>
   <style>
 /* 🌊 Tema Biru-Hitam Neon + Ombak Bergerak */
-
 * {
   margin: 0;
   padding: 0;
@@ -32,6 +31,7 @@ body {
   animation: waveMove 8s infinite linear;
   filter: blur(80px);
   z-index: -1;
+  pointer-events: none; /* ✅ Fix: agar tidak menutupi tombol */
 }
 @keyframes waveMove {
   0% { transform: translateX(0); }
@@ -66,42 +66,7 @@ body {
   margin-top: 10px;
 }
 
-.login-area {
-  margin-top: 20px;
-}
-
-.login-area input {
-  padding: 8px;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  background: #001d3d;
-  color: #fff;
-}
-
-.login-area button {
-  background: #00b4d8;
-  border: none;
-  border-radius: 5px;
-  color: #000;
-  font-weight: bold;
-  padding: 8px 15px;
-  margin-left: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.login-area button:hover {
-  background: #48cae4;
-}
-
-.welcome-text {
-  margin-top: 10px;
-  color: #90e0ef;
-  font-weight: 600;
-}
-
-/* Promo Running Bar */
+/* Promo Bar */
 .promo-bar {
   background: #0077b6;
   color: #fff;
@@ -270,11 +235,6 @@ section h2 {
   background: #48cae4;
 }
 
-.error {
-  color: #ff6b6b;
-  font-size: 0.9em;
-}
-
 /* Footer */
 footer {
   background: #001d3d;
@@ -289,6 +249,7 @@ footer {
 
 <body>
   <div class="wave-bg"></div>
+
   <div class="header">
     <h1 class="glow">Dafzx Joki & Store 🎣</h1>
     <p class="tagline">Joki Cepat, Aman, dan Murah!</p>
@@ -302,20 +263,20 @@ footer {
       <input id="nama" placeholder="Nama kamu" required>
       <select id="item" onchange="hitungTotal()">
         <option value="">Pilih Item</option>
-        <option>Astral Rod</option>
-        <option>Ares Rod</option>
-        <option>Angler Rod</option>
-        <option>Ghostfind Rod</option>
-        <option>1M Coin</option>
-        <option>2M Coin</option>
-        <option>3M Coin</option>
-        <option>4M Coin</option>
-        <option>5M Coin</option>
-        <option>AFK 1 Jam</option>
-        <option>AFK 2 Jam</option>
-        <option>AFK 24 Jam</option>
-        <option>AFK 48 Jam</option>
-        <option>AFK 7 Hari</option>
+        <option value="Astral Rod">Astral Rod</option>
+        <option value="Ares Rod">Ares Rod</option>
+        <option value="Angler Rod">Angler Rod</option>
+        <option value="Ghostfind Rod">Ghostfind Rod</option>
+        <option value="1M Coin">1M Coin</option>
+        <option value="2M Coin">2M Coin</option>
+        <option value="3M Coin">3M Coin</option>
+        <option value="4M Coin">4M Coin</option>
+        <option value="5M Coin">5M Coin</option>
+        <option value="AFK 1 Jam">AFK 1 Jam</option>
+        <option value="AFK 2 Jam">AFK 2 Jam</option>
+        <option value="AFK 24 Jam">AFK 24 Jam</option>
+        <option value="AFK 48 Jam">AFK 48 Jam</option>
+        <option value="AFK 7 Hari">AFK 7 Hari</option>
       </select>
       <input id="jumlah" type="number" placeholder="Jumlah" min="1" value="1" onchange="hitungTotal()">
       <p>Total: <span id="totalHarga">Rp0</span></p>
@@ -354,318 +315,126 @@ footer {
   </div>
 
 <script>
-const hargaData={Astral Rod:15000,Ares Rod:20000,Angler Rod:25000,Ghostfind Rod:30000,"1M Coin":15000,"2M Coin":28000,"3M Coin":43000,"4M Coin":68000,"5M Coin":73000,"AFK 1 Jam":1000,"AFK 2 Jam":2000,"AFK 24 Jam":10000,"AFK 48 Jam":20000,"AFK 7 Hari":120000};
-function hitungTotal(){const e=document.getElementById("item"),t=document.getElementById("jumlah").value,a=hargaData[e.value]*t||0;document.getElementById("totalHarga").innerText=`Rp${a.toLocaleString()}`}
+const hargaData = {
+  "Astral Rod":15000,
+  "Ares Rod":20000,
+  "Angler Rod":25000,
+  "Ghostfind Rod":30000,
+  "1M Coin":15000,
+  "2M Coin":28000,
+  "3M Coin":43000,
+  "4M Coin":68000,
+  "5M Coin":73000,
+  "AFK 1 Jam":1000,
+  "AFK 2 Jam":2000,
+  "AFK 24 Jam":10000,
+  "AFK 48 Jam":20000,
+  "AFK 7 Hari":120000
+};
 
-const leaderboardData=[{nama:"Faris",poin:300},{nama:"Akbar",poin:250},{nama:"Zidan",poin:180},{nama:"Rafi",poin:120}];
-function renderLeaderboard(){const e=document.getElementById("leaderboardList");e.innerHTML="",leaderboardData.sort((e,t)=>t.poin-e.poin),leaderboardData.forEach((t,a)=>{const n=document.createElement("li");n.textContent=`${a+1}. ${t.nama} - ${t.poin} poin`,e.appendChild(n)})}
+function hitungTotal() {
+  const item = document.getElementById("item").value;
+  const jumlah = parseInt(document.getElementById("jumlah").value) || 0;
+  const total = (hargaData[item] || 0) * jumlah;
+  document.getElementById("totalHarga").innerText = `Rp${total.toLocaleString()}`;
+}
+
+const leaderboardData = [
+  { nama:"Faris", poin:300 },
+  { nama:"Akbar", poin:250 },
+  { nama:"Zidan", poin:180 },
+  { nama:"Rafi", poin:120 }
+];
+
+function renderLeaderboard() {
+  const list = document.getElementById("leaderboardList");
+  list.innerHTML = "";
+  leaderboardData.sort((a,b)=>b.poin-a.poin);
+  leaderboardData.forEach((p,i)=>{
+    const li = document.createElement("li");
+    li.textContent = `${i+1}. ${p.nama} - ${p.poin} poin`;
+    list.appendChild(li);
+  });
+}
 renderLeaderboard();
 
-const promoCode="DAFZX2025",promoMessage="Selamat! Kamu dapet diskon 10% 🎉";
-function cekPromo(){const e=prompt("Masukkan kode promo:");alert(e===promoCode?promoMessage:"Kode salah / kadaluarsa ❌")}
+const promoCode = "DAFZX2025";
+function cekPromo() {
+  const kode = prompt("Masukkan kode promo:");
+  alert(kode === promoCode ? "Selamat! Kamu dapet diskon 10% 🎉" : "Kode salah / kadaluarsa ❌");
+}
 
-function loginAdmin(){const e=prompt("Masukkan password admin:");"DafzxJoki"===e?document.getElementById("adminPanel").classList.remove("hidden"):alert("Password salah!")}
-function closeAdmin(){document.getElementById("adminPanel").classList.add("hidden")}
+function loginAdmin() {
+  const pass = prompt("Masukkan password admin:");
+  if (pass === "DafzxJoki") {
+    document.getElementById("adminPanel").classList.remove("hidden");
+  } else {
+    alert("Password salah!");
+  }
+}
+function closeAdmin() {
+  document.getElementById("adminPanel").classList.add("hidden");
+}
 
-function ambilReward(){const e=new Date().toDateString(),t=localStorage.getItem("lastReward");t===e?alert("Kamu sudah klaim reward hari ini!"):(
-alert("Reward harian berhasil diklaim! 🎁 +5 poin"),localStorage.setItem("lastReward",e))}
+function ambilReward() {
+  const today = new Date().toDateString();
+  const last = localStorage.getItem("lastReward");
+  if (last === today) {
+    alert("Kamu sudah klaim reward hari ini!");
+  } else {
+    alert("Reward harian berhasil diklaim! 🎁 +5 poin");
+    localStorage.setItem("lastReward", today);
+  }
+}
 
-function simpanReview(e){e.preventDefault();const t=document.getElementById("reviewNama").value.trim(),a=document.getElementById("reviewText").value.trim();if(!t||!a)return alert("Isi semua kolom!");const n={nama:t,teks:a},r=JSON.parse(localStorage.getItem("reviews")||"[]");r.push(n),localStorage.setItem("reviews",JSON.stringify(r)),renderReview(),document.getElementById("reviewForm").reset()}
-function renderReview(){const e=JSON.parse(localStorage.getItem("reviews")||"[]"),t=document.getElementById("reviewList");t.innerHTML="",e.forEach(e=>{const a=document.createElement("div");a.className="review-item",a.innerHTML=`<strong>${e.nama}</strong><br>${e.teks}`,t.appendChild(a)})}
+function simpanReview(e) {
+  e.preventDefault();
+  const nama = document.getElementById("reviewNama").value.trim();
+  const teks = document.getElementById("reviewText").value.trim();
+  if (!nama || !teks) return alert("Isi semua kolom!");
+  const review = { nama, teks };
+  const data = JSON.parse(localStorage.getItem("reviews") || "[]");
+  data.push(review);
+  localStorage.setItem("reviews", JSON.stringify(data));
+  renderReview();
+  document.getElementById("reviewForm").reset();
+}
+
+function renderReview() {
+  const data = JSON.parse(localStorage.getItem("reviews") || "[]");
+  const list = document.getElementById("reviewList");
+  list.innerHTML = "";
+  data.forEach(r=>{
+    const div = document.createElement("div");
+    div.className = "review-item";
+    div.innerHTML = `<strong>${r.nama}</strong><br>${r.teks}`;
+    list.appendChild(div);
+  });
+}
 renderReview();
 
-function kirimPesan(){const e=document.getElementById("nama").value,t=document.getElementById("item").value,a=document.getElementById("jumlah").value,n=document.getElementById("totalHarga").innerText,r=`Halo, saya mau order:\nNama: ${e}\nItem: ${t}\nJumlah: ${a}\nTotal: ${n}`;window.open(`https://wa.me/6281266435034?text=${encodeURIComponent(r)}`)}
+function kirimPesan() {
+  const nama = document.getElementById("nama").value;
+  const item = document.getElementById("item").value;
+  const jumlah = document.getElementById("jumlah").value;
+  const total = document.getElementById("totalHarga").innerText;
+  if (!item) return alert("Pilih item dulu!");
+  const pesan = `Halo, saya mau order:\nNama: ${nama}\nItem: ${item}\nJumlah: ${jumlah}\nTotal: ${total}`;
+  window.open(`https://wa.me/6281266435034?text=${encodeURIComponent(pesan)}`);
+}
 
-let promoIndex=0;const promoTexts=["🔥 Diskon 10% pakai kode DAFZX2025!","🎣 Joki cepat & aman — 24 jam online!","💸 Bayar via Dana / Gopay / Qris!"];
-function gantiPromo(){document.getElementById("promoText").innerText=promoTexts[promoIndex],promoIndex=(promoIndex+1)%promoTexts.length}
-setInterval(gantiPromo,4e3),gantiPromo();
+let promoIndex = 0;
+const promoTexts = [
+  "🔥 Diskon 10% pakai kode DAFZX2025!",
+  "🎣 Joki cepat & aman — 24 jam online!",
+  "💸 Bayar via Dana / Gopay / Qris!"
+];
+function gantiPromo() {
+  document.getElementById("promoText").innerText = promoTexts[promoIndex];
+  promoIndex = (promoIndex + 1) % promoTexts.length;
+}
+setInterval(gantiPromo, 4000);
+gantiPromo();
 </script>
-
 </body>
-  </html>      height: 3px;
-      background: linear-gradient(90deg, #00bfff, #0077ff);
-    }
-
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.4em;
-      color: #00bfff;
-      text-shadow: 0 0 10px #0077ff, 0 0 25px #00bfff;
-    }
-
-    /* === LOGIN === */
-    .login-section {
-      margin-top: 15px;
-    }
-
-    .login-input {
-      background: rgba(0,0,0,0.3);
-      border: 1px solid #00bfff;
-      border-radius: 6px;
-      color: #e6f7ff;
-      padding: 8px 10px;
-      margin: 5px;
-    }
-
-    .login-btn {
-      background: linear-gradient(90deg, #00bfff, #0077ff);
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .login-btn:hover {
-      box-shadow: 0 0 15px #00bfff;
-    }
-
-    /* === CONTENT === */
-    .container {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 0 20px;
-      z-index: 2;
-      position: relative;
-      animation: fadeIn 1.5s ease-in-out forwards;
-      opacity: 0;
-    }
-
-    .card {
-      background: rgba(10, 20, 40, 0.9);
-      border: 1px solid #003366;
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 25px;
-      box-shadow: 0 0 20px rgba(0, 100, 255, 0.2);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(0, 150, 255, 0.4);
-    }
-
-    h2 {
-      color: #00bfff;
-      font-family: 'Orbitron', sans-serif;
-      border-bottom: 2px solid #00bfff;
-      padding-bottom: 8px;
-      margin-bottom: 15px;
-    }
-
-    ul { list-style: none; padding: 0; }
-
-    li {
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 1.05em;
-    }
-
-    /* === FORM PESAN === */
-    form label {
-      display: block;
-      margin: 8px 0 3px;
-      color: #aad8ff;
-    }
-
-    form input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      background: rgba(0,0,0,0.3);
-      border: 1px solid #00bfff;
-      border-radius: 8px;
-      color: #e6f7ff;
-      margin-bottom: 10px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: linear-gradient(90deg, #00bfff, #0077ff);
-      color: #fff;
-      text-decoration: none;
-      padding: 12px 22px;
-      border-radius: 8px;
-      font-weight: bold;
-      box-shadow: 0 0 15px #0077ff;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #00bfff;
-    }
-
-    /* === REVIEW === */
-    .review-item {
-      background: rgba(0, 20, 40, 0.7);
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #004080;
-    }
-
-    .stars { color: gold; margin-bottom: 5px; }
-    .review-name { font-weight: bold; color: #00bfff; }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #80bfff;
-      font-size: 0.9em;
-      background: rgba(0, 10, 25, 0.8);
-      border-top: 1px solid #003366;
-      animation: fadeUp 1.5s ease-in-out forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-  <div id="loading">
-    <div class="spinner"></div>
-    <div class="loading-text">Loading...</div>
-  </div>
-
-  <div class="promo-bar">
-    <span>🔥 PROMO BULAN INI! Diskon 20% untuk semua layanan Joki Coin 🔥 | Gratis bonus AFK 2 Jam setiap pembelian di atas 50K!</span>
-  </div>
-
-  <header>
-    <h1>Dafzx Joki And Store</h1>
-    <p>Jasa Joki & Store Game Fish It 🎣 | Cepat, Aman, Terpercaya</p>
-
-    <div id="loginArea" class="login-section">
-      <input type="text" id="username" class="login-input" placeholder="Nama">
-      <input type="password" id="password" class="login-input" placeholder="Password">
-      <button class="login-btn" onclick="login()">Login</button>
-    </div>
-
-    <div id="greetingArea" style="display:none; margin-top:10px;">
-      <p id="greeting" style="color:#00bfff;font-family:'Orbitron';font-size:1.1em;"></p>
-      <button class="login-btn" onclick="logout()">Keluar</button>
-    </div>
-  </header>
-
-  <div class="container">
-    <div class="card">
-      <h2>🛒 Form Pemesanan</h2>
-      <form id="orderForm" onsubmit="sendToWhatsApp(event)">
-        <label>Nama:</label>
-        <input type="text" id="orderName" required>
-
-        <label>Jenis Joki:</label>
-        <select id="orderType">
-          <option>Joki Coin</option>
-          <option>Joki Rod</option>
-          <option>Joki AFK</option>
-        </select>
-
-        <label>Paket:</label>
-        <input type="text" id="orderPackage" placeholder="Contoh: 2M (28K)" required>
-
-        <label>Catatan (opsional):</label>
-        <textarea id="orderNote" placeholder="Tambahan info seperti username game, ID akun, dll"></textarea>
-
-        <button type="submit" class="btn">Kirim ke WhatsApp</button>
-      </form>
-    </div>
-
-    <div class="card review">
-      <h2>⭐ Review Pelanggan</h2>
-      <div class="review-item">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <div class="review-name">Rizky</div>
-        <p>Proses cepat banget, aman dan hasil sesuai pesanan 🔥</p>
-      </div>
-      <div class="review-item">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <div class="review-name">Faris</div>
-        <p>Adminnya ramah, joki AFK-nya mantap! 👍</p>
-      </div>
-      <div class="review-item">
-        <div class="stars">⭐⭐⭐⭐</div>
-        <div class="review-name">Andra</div>
-        <p>Cepat tapi kadang agak delay respon WA-nya 😅</p>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    © 2025 Dafzx Joki And Store — Semua layanan terkait game Fish It.
-  </footer>
-
-  <script>
-    // === LOADING EFFECT ===
-    window.addEventListener("load", () => {
-      const loader = document.getElementById("loading");
-      const body = document.body;
-      loader.style.opacity = "0";
-      setTimeout(() => {
-        loader.style.display = "none";
-        body.classList.add("loaded");
-      }, 800);
-    });
-
-    // === LOGIN SYSTEM ===
-    function login() {
-      const name = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-      if (name && pass) {
-        localStorage.setItem("dafzx_user", name);
-        showGreeting(name);
-      } else {
-        alert("Isi nama dan password dulu ya!");
-      }
-    }
-
-    function logout() {
-      localStorage.removeItem("dafzx_user");
-      document.getElementById("loginArea").style.display = "block";
-      document.getElementById("greetingArea").style.display = "none";
-    }
-
-    function showGreeting(name) {
-      document.getElementById("loginArea").style.display = "none";
-      document.getElementById("greetingArea").style.display = "block";
-      document.getElementById("greeting").textContent = `Halo, ${name} 👋`;
-      document.getElementById("orderName").value = name;
-    }
-
-    window.onload = function() {
-      const savedUser = localStorage.getItem("dafzx_user");
-      if (savedUser) showGreeting(savedUser);
-    }
-
-    // === FORM PESANAN KE WHATSAPP ===
-    function sendToWhatsApp(event) {
-      event.preventDefault();
-      const name = document.getElementById("orderName").value;
-      const type = document.getElementById("orderType").value;
-      const pack = document.getElementById("orderPackage").value;
-      const note = document.getElementById("orderNote").value;
-      const msg = 
-`Halo admin Dafzx Joki & Store!
-Saya mau pesan joki:
-
-Nama: ${name}
-Layanan: ${type}
-Paket: ${pack}
-Catatan: ${note}`;
-
-      const url = "https://wa.me/6281266435034?text=" + encodeURIComponent(msg);
-      window.open(url, "_blank");
-    }
-  </script>
-</body>
-  </html>
+        </html>
