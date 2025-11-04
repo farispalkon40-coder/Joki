@@ -3,652 +3,494 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dafzx Joki & Store v4.0 PRO</title>
-
-  <!-- 🌈 Font & Icon -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-
+  <title>Dafzx Joki & Store v5.0 PRO MAX</title>
   <style>
-  /* ===========================================================
-     🌌 DAFZX JOKI & STORE v4.0 PRO
-     Tema: Neon Blue + Purple
-     =========================================================== */
+/* 🌟 GLASS WHITE + CYAN GLOW THEME */
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
-  body {
-    background: linear-gradient(180deg, #000814, #1a0033);
-    color: #fff;
-    overflow-x: hidden;
-  }
+body {
+  background: linear-gradient(180deg, #e8f7ff, #dff1ff);
+  color: #001d3d;
+  overflow-x: hidden;
+}
 
-  /* 🔮 Efek ombak neon */
-  .wave-bg {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 200%;
-    height: 200px;
-    background: rgba(120, 0, 255, 0.3);
-    border-radius: 100%;
-    animation: waveMove 8s infinite linear;
-    filter: blur(100px);
-    z-index: -1;
-    pointer-events: none;
-  }
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 50px 20px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #00b4d8;
+  box-shadow: 0 0 20px rgba(0,180,216,0.3);
+  border-radius: 0 0 20px 20px;
+}
 
-  @keyframes waveMove {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+.header h1 {
+  font-size: 2.5em;
+  font-weight: 800;
+  color: #00b4d8;
+  text-shadow: 0 0 20px rgba(0,180,216,0.6);
+}
 
-  /* 🌟 Header utama */
-  .header {
-    text-align: center;
-    padding: 40px 20px;
-    background: rgba(0, 0, 50, 0.4);
-    border-bottom: 2px solid #7209b7;
-    box-shadow: 0 0 25px #560bad;
-  }
+.tagline {
+  color: #0077b6;
+  font-weight: 500;
+  margin-top: 8px;
+}
 
-  .header .glow {
-    font-size: 2.5em;
-    font-weight: 800;
-    color: #00b4d8;
-    text-shadow: 0 0 10px #00b4d8, 0 0 25px #7209b7;
-    animation: glowPulse 2s infinite alternate;
-  }
+/* PROMO BAR */
+.promo-bar {
+  margin: 15px auto;
+  max-width: 600px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  text-align: center;
+  color: #0077b6;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0,180,216,0.2);
+}
 
-  @keyframes glowPulse {
-    from { text-shadow: 0 0 10px #00b4d8; }
-    to { text-shadow: 0 0 25px #b5179e; }
-  }
+/* FORM PEMESANAN */
+#orderForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 450px;
+  margin: 40px auto;
+  box-shadow: 0 0 20px rgba(0,180,216,0.2);
+}
 
-  .tagline {
-    color: #caf0f8;
-    font-size: 1em;
-    margin-top: 10px;
-  }
+#orderForm input, 
+#orderForm select, 
+#orderForm textarea {
+  padding: 10px;
+  border: 1px solid rgba(0,180,216,0.3);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.6);
+  outline: none;
+  color: #003049;
+}
 
-  /* 🔥 Bar promo berjalan */
-  .promo-bar {
-    background: linear-gradient(90deg, #7209b7, #00b4d8);
-    color: white;
-    text-align: center;
-    padding: 8px;
-    font-weight: bold;
-    border-bottom: 2px solid #560bad;
-  }
+#orderForm button {
+  background: #00b4d8;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#orderForm button:hover {
+  background: #0077b6;
+}
 
-  /* 🛒 Bagian pemesanan */
-  section {
-    padding: 40px 20px;
-    text-align: center;
-  }
+#totalHarga {
+  font-weight: bold;
+  color: #0077b6;
+}
 
-  section h2 {
-    color: #00b4d8;
-    text-shadow: 0 0 10px #00b4d8;
-    margin-bottom: 20px;
-  }
+/* LEADERBOARD */
+.leaderboard {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  padding: 25px;
+  border-radius: 15px;
+  margin: 30px auto;
+  max-width: 450px;
+  box-shadow: 0 0 20px rgba(0,180,216,0.2);
+}
+.leaderboard h2 {
+  color: #00b4d8;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+}
+.leaderboard li {
+  padding: 6px;
+  border-bottom: 1px solid rgba(0,180,216,0.2);
+}
 
-  /* 🧾 Form order */
-  #orderForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    background: rgba(0, 0, 50, 0.4);
-    padding: 25px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: 0 auto;
-    box-shadow: 0 0 15px #7209b7;
-  }
+/* REVIEW */
+.review-section {
+  text-align: center;
+  margin: 50px 0;
+}
+.review-section form {
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 450px;
+  margin: 0 auto;
+}
+.review-item {
+  background: rgba(255,255,255,0.4);
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 450px;
+}
 
-  #orderForm input, #orderForm select {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    background: #001d3d;
-    color: #fff;
-  }
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(8px);
+  color: #0077b6;
+  font-size: 0.85em;
+  border-top: 2px solid rgba(0,180,216,0.3);
+}
 
-  #orderForm button {
-    background: linear-gradient(90deg, #7209b7, #00b4d8);
-    border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+/* ADMIN BUTTON */
+.admin-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00b4d8;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  font-size: 1.4em;
+  box-shadow: 0 0 20px rgba(0,180,216,0.6);
+  transition: 0.3s;
+}
+.admin-button:hover {
+  transform: scale(1.1);
+}
 
-  #orderForm button:hover {
-    box-shadow: 0 0 20px #00b4d8;
-  }
+/* ADMIN PANEL (FULL SCREEN) */
+.admin-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(15px);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.admin-panel.active {
+  display: flex;
+}
+.admin-box {
+  background: rgba(255,255,255,0.4);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 0 25px rgba(0,180,216,0.3);
+  text-align: center;
+}
+.admin-box h2 {
+  color: #00b4d8;
+  margin-bottom: 20px;
+}
+.admin-box button {
+  background: #00b4d8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+}
+.admin-box button:hover {
+  background: #0077b6;
+}
 
-  #totalHarga {
-    color: #90e0ef;
-    font-weight: bold;
-  }
-
-  /* 🏆 Leaderboard */
-  .leaderboard-section ul {
-    list-style: none;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: 0 auto;
-    background: rgba(0, 0, 50, 0.4);
-    box-shadow: 0 0 15px #7209b7;
-  }
-
-  /* 💬 Review */
-  .review-section form {
-    background: rgba(0, 0, 50, 0.4);
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: 0 auto 20px;
-    box-shadow: 0 0 15px #560bad;
-  }
-
-  .review-section textarea {
-    width: 100%;
-    height: 80px;
-    padding: 8px;
-    background: #001d3d;
-    border: none;
-    border-radius: 5px;
-    color: white;
-  }
-
-  .review-section button {
-    background: linear-gradient(90deg, #00b4d8, #7209b7);
-    border: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 6px;
-    padding: 8px 15px;
-    cursor: pointer;
-  }
-
-  .review-section button:hover {
-    box-shadow: 0 0 15px #7209b7;
-  }
-
-  #reviewList {
-    max-width: 500px;
-    margin: 0 auto;
-    background: rgba(0, 0, 50, 0.3);
-    padding: 15px;
-    border-radius: 10px;
-  }
-
-  .review-item {
-    border-bottom: 1px solid #00b4d8;
-    padding: 5px 0;
-  }
-
-  /* ⚙️ Tombol Admin */
-  .admin-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(90deg, #00b4d8, #7209b7);
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 20px;
-    cursor: pointer;
-    box-shadow: 0 0 20px #7209b7;
-    font-weight: bold;
-  }
-
-  .admin-button:hover {
-    transform: scale(1.05);
-  }
-
-  /* 🪟 Popup Login Admin */
-  .login-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,30,0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    backdrop-filter: blur(10px);
-  }
-
-  .login-modal.hidden {
-    display: none;
-  }
-
-  .login-box {
-    background: rgba(0,0,50,0.7);
-    padding: 25px;
-    border-radius: 12px;
-    text-align: center;
-    width: 300px;
-    box-shadow: 0 0 20px #7209b7;
-  }
-
-  .login-box input {
-    width: 100%;
-    margin-top: 10px;
-    padding: 8px;
-    border-radius: 6px;
-    border: none;
-    background: #001d3d;
-    color: #fff;
-  }
-
-  .login-box button {
-    margin-top: 15px;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    background: linear-gradient(90deg, #00b4d8, #7209b7);
-    color: white;
-    cursor: pointer;
-  }
-
-  /* 📊 Panel Admin Fullscreen */
-  .admin-panel {
-    position: fixed;
-    inset: 0;
-    background: rgba(5, 0, 20, 0.95);
-    color: #fff;
-    z-index: 9998;
-    display: none;
-    overflow-y: auto;
-  }
-
-  .admin-panel.active {
-    display: block;
-  }
-
-  .admin-header {
-    background: linear-gradient(90deg, #7209b7, #00b4d8);
-    padding: 15px;
-    font-weight: bold;
-    font-size: 1.3em;
-    text-align: center;
-    box-shadow: 0 0 20px #7209b7;
-  }
-
-  .admin-content {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-
-  .admin-card {
-    background: rgba(0,0,50,0.5);
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 0 15px #560bad;
-  }
-
-  .admin-card h3 {
-    color: #00b4d8;
-    margin-bottom: 10px;
-  }
-
-  .admin-card button {
-    background: linear-gradient(90deg, #7209b7, #00b4d8);
-    border: none;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-
-  footer {
-    text-align: center;
-    padding: 20px;
-    background: #001d3d;
-    border-top: 2px solid #7209b7;
-    font-size: 0.8em;
-  }
+/* CHATBOT */
+.chatbot {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,180,216,0.3);
+  display: none;
+  flex-direction: column;
+}
+.chatbot.active { display: flex; }
+.chat-header {
+  background: #00b4d8;
+  color: #fff;
+  padding: 10px;
+  border-radius: 15px 15px 0 0;
+  text-align: center;
+  font-weight: bold;
+}
+.chat-body {
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+  font-size: 0.9em;
+}
+.chat-input {
+  display: flex;
+  border-top: 1px solid rgba(0,180,216,0.2);
+}
+.chat-input input {
+  flex: 1;
+  border: none;
+  padding: 8px;
+  border-radius: 0 0 0 15px;
+  outline: none;
+}
+.chat-input button {
+  border: none;
+  background: #00b4d8;
+  color: #fff;
+  border-radius: 0 0 15px 0;
+  padding: 8px 12px;
+  cursor: pointer;
+}
   </style>
-</head>
-<body>
-  <div class="wave-bg"></div>
+  </head>
+  <body>
 
   <div class="header">
-    <h1 class="glow">Dafzx Joki & Store 🎣</h1>
-    <p class="tagline">Joki Cepat, Aman, dan Murah!</p>
+    <h1>Dafzx Joki & Store 🎣</h1>
+    <p class="tagline">Cepat • Aman • Terpercaya</p>
   </div>
 
   <div class="promo-bar" id="promoText">🔥 Diskon 10% pakai kode DAFZX2025!</div>
 
-  <section>
-    <h2>🛒 Pemesanan</h2>
-    <form id="orderForm" onsubmit="event.preventDefault(); kirimPesan();">
-      <input id="nama" placeholder="Nama kamu" required>
-      <select id="item" onchange="hitungTotal()">
-        <option value="">Pilih Item</option>
-        <option value="Astral Rod">Astral Rod</option>
-        <option value="Ares Rod">Ares Rod</option>
-        <option value="Angler Rod">Angler Rod</option>
-        <option value="Ghostfind Rod">Ghostfind Rod</option>
-        <option value="1M Coin">1M Coin</option>
-        <option value="2M Coin">2M Coin</option>
-        <option value="3M Coin">3M Coin</option>
-        <option value="4M Coin">4M Coin</option>
-        <option value="5M Coin">5M Coin</option>
-        <option value="AFK 1 Jam">AFK 1 Jam</option>
-        <option value="AFK 2 Jam">AFK 2 Jam</option>
-        <option value="AFK 24 Jam">AFK 24 Jam</option>
-        <option value="AFK 48 Jam">AFK 48 Jam</option>
-        <option value="AFK 7 Hari">AFK 7 Hari</option>
-      </select>
-      <input id="jumlah" type="number" placeholder="Jumlah" min="1" value="1" onchange="hitungTotal()">
-      <p>Total: <span id="totalHarga">Rp0</span></p>
-      <button type="submit">Pesan Sekarang</button>
-    </form>
-  </section>
-  <!-- 🏆 Leaderboard -->
-  <section class="leaderboard-section">
-    <h2>🏆 Top Pelanggan</h2>
-    <ul id="leaderboard"></ul>
-  </section>
+  <form id="orderForm" onsubmit="event.preventDefault(); kirimPesan();">
+    <input id="nama" placeholder="Nama kamu" required>
+    <select id="item" onchange="hitungTotal()">
+      <option value="">Pilih Item</option>
+      <option value="Astral Rod">Astral Rod</option>
+      <option value="Ares Rod">Ares Rod</option>
+      <option value="Angler Rod">Angler Rod</option>
+      <option value="Ghostfind Rod">Ghostfind Rod</option>
+      <option value="1M Coin">1M Coin</option>
+      <option value="2M Coin">2M Coin</option>
+      <option value="3M Coin">3M Coin</option>
+      <option value="5M Coin">5M Coin</option>
+      <option value="AFK 1 Jam">AFK 1 Jam</option>
+      <option value="AFK 24 Jam">AFK 24 Jam</option>
+      <option value="AFK 7 Hari">AFK 7 Hari</option>
+    </select>
+    <input id="jumlah" type="number" placeholder="Jumlah" min="1" value="1" onchange="hitungTotal()">
+    <p>Total: <span id="totalHarga">Rp0</span></p>
+    <button type="submit">Pesan Sekarang</button>
+  </form>
 
-  <!-- 💬 Review -->
+  <div class="leaderboard">
+    <h2>🏆 Top Pelanggan</h2>
+    <ul id="leaderboardList"></ul>
+  </div>
+
   <section class="review-section">
-    <h2>💬 Ulasan</h2>
-    <form id="reviewForm" onsubmit="event.preventDefault(); tambahReview();">
-      <input id="reviewNama" placeholder="Nama kamu" required>
-      <textarea id="reviewText" placeholder="Tulis ulasan kamu..." required></textarea>
+    <h2>⭐ Review Pelanggan</h2>
+    <form id="reviewForm" onsubmit="simpanReview(event)">
+      <input id="reviewNama" placeholder="Nama kamu">
+      <textarea id="reviewText" placeholder="Tulis review kamu..."></textarea>
       <button type="submit">Kirim Review</button>
     </form>
     <div id="reviewList"></div>
   </section>
 
-  <!-- 👑 Tombol Admin -->
-  <button class="admin-button" onclick="bukaLogin()">👑 Admin</button>
-
-  <!-- 🔐 Popup Login -->
-  <div id="loginModal" class="login-modal hidden">
-    <div class="login-box">
-      <h3>Login Admin</h3>
-      <input id="adminPass" type="password" placeholder="Masukkan Password">
-      <button onclick="cekLogin()">Masuk</button>
-      <p id="loginError" style="color:red; display:none; margin-top:5px;">Password salah!</p>
-    </div>
-  </div>
-
-  <!-- ⚙️ Panel Admin -->
-  <div id="adminPanel" class="admin-panel">
-    <div class="admin-header">
-      👑 Dafzx Admin Dashboard
-      <button style="float:right; background:red; border:none; color:white; padding:5px 10px; border-radius:5px; cursor:pointer;" onclick="tutupAdmin()">X</button>
-    </div>
-    <div class="admin-content">
-      <!-- Statistik -->
-      <div class="admin-card">
-        <h3>📊 Statistik</h3>
-        <p>Total Order: <span id="statOrder">0</span></p>
-        <p>Total Pendapatan: <span id="statPendapatan">Rp0</span></p>
-        <p>Total Pelanggan: <span id="statPelanggan">0</span></p>
-      </div>
-
-      <!-- Promo -->
-      <div class="admin-card">
-        <h3>🎟️ Promo</h3>
-        <input id="promoInput" placeholder="Tulis promo baru">
-        <button onclick="tambahPromo()">Tambah Promo</button>
-        <ul id="promoList"></ul>
-      </div>
-
-      <!-- Review Management -->
-      <div class="admin-card">
-        <h3>💬 Review</h3>
-        <ul id="adminReviewList"></ul>
-      </div>
-
-      <!-- Export -->
-      <div class="admin-card">
-        <h3>📤 Export Data</h3>
-        <button onclick="exportCSV()">Export ke CSV</button>
-      </div>
-    </div>
-  </div>
-
   <footer>
-    <p>© 2025 Dafzx Joki & Store. All Rights Reserved.</p>
+    <p>© 2025 Dafzx Joki & Store | All Rights Reserved</p>
   </footer>
 
-  <!-- ================================
-       🧠 JavaScript Logic Section
-       ================================ -->
+  <button class="admin-button" onclick="loginAdmin()">👑</button>
+
+  <!-- ADMIN PANEL -->
+  <div class="admin-panel" id="adminPanel">
+    <div class="admin-box">
+      <h2>Panel Admin</h2>
+      <button onclick="tambahPromo()">Tambah Promo</button>
+      <button onclick="hapusReview()">Hapus Semua Review</button>
+      <button onclick="exportData()">Export Data (CSV)</button>
+      <button onclick="closeAdmin()">Tutup Panel</button>
+    </div>
+  </div>
+
+  <!-- CHATBOT -->
+  <div class="chatbot" id="chatbot">
+    <div class="chat-header">💬 Dafzx ChatBot</div>
+    <div class="chat-body" id="chatBody">
+      <p><strong>Bot:</strong> Halo! Tanya aja tentang harga, promo, atau cara pesan 😄</p>
+    </div>
+    <div class="chat-input">
+      <input id="chatInput" placeholder="Tulis pesan..." />
+      <button onclick="sendChat()">➤</button>
+    </div>
+  </div>
+
   <script>
-  // ========================================
-  // 💰 Harga Item
-  // ========================================
-  const hargaItem = {
-    "Astral Rod": 20000,
-    "Ares Rod": 35000,
-    "Angler Rod": 50000,
-    "Ghostfind Rod": 75000,
-    "1M Coin": 10000,
-    "2M Coin": 18000,
-    "3M Coin": 25000,
-    "4M Coin": 30000,
-    "5M Coin": 35000,
-    "AFK 1 Jam": 5000,
-    "AFK 2 Jam": 9000,
-    "AFK 24 Jam": 50000,
-    "AFK 48 Jam": 95000,
-    "AFK 7 Hari": 250000
+  /* === Harga Barang === */
+  const hargaData = {
+    "Astral Rod": 15000,
+    "Ares Rod": 20000,
+    "Angler Rod": 25000,
+    "Ghostfind Rod": 30000,
+    "1M Coin": 12000,
+    "2M Coin": 23000,
+    "3M Coin": 33000,
+    "5M Coin": 50000,
+    "AFK 1 Jam": 1000,
+    "AFK 24 Jam": 10000,
+    "AFK 7 Hari": 50000
   };
 
-  // ========================================
-  // 🧮 Hitung Total Harga
-  // ========================================
+  /* === Hitung Total === */
   function hitungTotal() {
     const item = document.getElementById("item").value;
-    const jumlah = parseInt(document.getElementById("jumlah").value);
-    const harga = hargaItem[item] || 0;
-    const total = harga * jumlah;
-    document.getElementById("totalHarga").innerText = "Rp" + total.toLocaleString("id-ID");
+    const jumlah = parseInt(document.getElementById("jumlah").value) || 0;
+    const total = (hargaData[item] || 0) * jumlah;
+    document.getElementById("totalHarga").innerText = "Rp" + total.toLocaleString();
   }
 
-  // ========================================
-  // 🛒 Kirim Pesan via WhatsApp
-  // ========================================
+  /* === Kirim Pesan WA === */
   function kirimPesan() {
     const nama = document.getElementById("nama").value;
     const item = document.getElementById("item").value;
     const jumlah = document.getElementById("jumlah").value;
-    const harga = hargaItem[item] * jumlah;
-    const tanggal = new Date().toLocaleString("id-ID");
-
-    if (!nama || !item || !jumlah) return alert("Isi semua kolom!");
-
-    // Simpan order ke localStorage
-    const orders = JSON.parse(localStorage.getItem("orders")) || [];
-    orders.push({ nama, item, jumlah, harga, tanggal });
-    localStorage.setItem("orders", JSON.stringify(orders));
-
-    alert("Pesanan berhasil dikirim ke admin lewat WhatsApp!");
-    hitungStatistik();
-
-    // Link WA
-    const pesan = `Halo Admin, saya ingin pesan:\nNama: ${nama}\nItem: ${item}\nJumlah: ${jumlah}\nTotal: Rp${harga.toLocaleString("id-ID")}\nTanggal: ${tanggal}`;
-    window.open("https://wa.me/6280000000000?text=" + encodeURIComponent(pesan));
+    const total = document.getElementById("totalHarga").innerText;
+    if (!item) return alert("Pilih item dulu!");
+    const text = `Halo, saya mau order:\nNama: ${nama}\nItem: ${item}\nJumlah: ${jumlah}\nTotal: ${total}`;
+    window.open(`https://wa.me/6281266435034?text=${encodeURIComponent(text)}`);
   }
 
-  // ========================================
-  // 🏆 Leaderboard (otomatis dari orders)
-  // ========================================
-  function updateLeaderboard() {
-    const data = JSON.parse(localStorage.getItem("orders")) || [];
-    const count = {};
-    data.forEach(o => { count[o.nama] = (count[o.nama] || 0) + parseInt(o.jumlah); });
-    const sorted = Object.entries(count).sort((a,b)=>b[1]-a[1]);
-    const lb = document.getElementById("leaderboard");
-    lb.innerHTML = sorted.map(([nama,jml])=>`<li>${nama} — ${jml}x order</li>`).join("");
+  /* === Leaderboard Dummy === */
+  const leaderboardData = [
+    { nama: "Faris", poin: 300 },
+    { nama: "Akbar", poin: 250 },
+    { nama: "Zidan", poin: 180 },
+    { nama: "Rafi", poin: 120 }
+  ];
+  function renderLeaderboard() {
+    const list = document.getElementById("leaderboardList");
+    list.innerHTML = "";
+    leaderboardData.sort((a,b) => b.poin - a.poin).forEach((v,i)=>{
+      const li = document.createElement("li");
+      li.textContent = `${i+1}. ${v.nama} - ${v.poin} poin`;
+      list.appendChild(li);
+    });
   }
+  renderLeaderboard();
 
-  // ========================================
-  // 💬 Review System
-  // ========================================
-  function tambahReview() {
-    const nama = document.getElementById("reviewNama").value;
-    const text = document.getElementById("reviewText").value;
-    if (!nama || !text) return alert("Isi nama dan review!");
-    const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-    reviews.push({ nama, text });
-    localStorage.setItem("reviews", JSON.stringify(reviews));
+  /* === Review === */
+  function simpanReview(e){
+    e.preventDefault();
+    const nama = document.getElementById("reviewNama").value.trim();
+    const teks = document.getElementById("reviewText").value.trim();
+    if(!nama || !teks) return alert("Isi semua kolom!");
+    const data = JSON.parse(localStorage.getItem("reviews") || "[]");
+    data.push({nama, teks});
+    localStorage.setItem("reviews", JSON.stringify(data));
+    renderReview();
     document.getElementById("reviewForm").reset();
-    tampilkanReview();
   }
-
-  function tampilkanReview() {
-    const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  function renderReview(){
     const list = document.getElementById("reviewList");
-    list.innerHTML = reviews.map((r,i)=>`<div class="review-item"><b>${r.nama}</b>: ${r.text}</div>`).join("");
+    const data = JSON.parse(localStorage.getItem("reviews") || "[]");
+    list.innerHTML = "";
+    data.forEach(r=>{
+      const div = document.createElement("div");
+      div.className="review-item";
+      div.innerHTML = `<strong>${r.nama}</strong><br>${r.teks}`;
+      list.appendChild(div);
+    });
   }
+  renderReview();
 
-  // ========================================
-  // 👑 Login Admin
-  // ========================================
-  function bukaLogin() {
-    document.getElementById("loginModal").classList.remove("hidden");
-  }
-
-  function cekLogin() {
-    const pass = document.getElementById("adminPass").value;
-    const error = document.getElementById("loginError");
-    if (pass === "DafzxJoki") {
-      document.getElementById("loginModal").classList.add("hidden");
-      bukaAdmin();
-      error.style.display = "none";
+  /* === Admin === */
+  function loginAdmin(){
+    const pass = prompt("Masukkan password admin:");
+    if(pass === "DafzxJoki"){
+      document.getElementById("adminPanel").classList.add("active");
+      document.documentElement.requestFullscreen();
     } else {
-      error.style.display = "block";
+      alert("Password salah!");
     }
   }
-
-  function bukaAdmin() {
-    document.getElementById("adminPanel").classList.add("active");
-    loadAdminData();
-  }
-
-  function tutupAdmin() {
+  function closeAdmin(){
     document.getElementById("adminPanel").classList.remove("active");
+    if (document.fullscreenElement) document.exitFullscreen();
   }
-
-  // ========================================
-  // 🎟️ Promo Management
-  // ========================================
-  function tambahPromo() {
-    const val = document.getElementById("promoInput").value.trim();
-    if (!val) return;
-    const promos = JSON.parse(localStorage.getItem("promos")) || [];
-    promos.push(val);
-    localStorage.setItem("promos", JSON.stringify(promos));
-    document.getElementById("promoInput").value = "";
-    tampilkanPromo();
+  function tambahPromo(){
+    const newPromo = prompt("Masukkan teks promo baru:");
+    if(newPromo){
+      localStorage.setItem("promoText", newPromo);
+      document.getElementById("promoText").innerText = newPromo;
+    }
   }
-
-  function tampilkanPromo() {
-    const promos = JSON.parse(localStorage.getItem("promos")) || [];
-    document.getElementById("promoList").innerHTML = promos.map((p,i)=>`<li>${p} <button onclick="hapusPromo(${i})">Hapus</button></li>`).join("");
-    document.getElementById("promoText").innerText = promos.length > 0 ? promos.join(" | ") : "🔥 Diskon 10% pakai kode DAFZX2025!";
+  function hapusReview(){
+    if(confirm("Yakin hapus semua review?")){
+      localStorage.removeItem("reviews");
+      renderReview();
+    }
   }
-
-  function hapusPromo(i) {
-    const promos = JSON.parse(localStorage.getItem("promos")) || [];
-    promos.splice(i,1);
-    localStorage.setItem("promos", JSON.stringify(promos));
-    tampilkanPromo();
-  }
-
-  // ========================================
-  // 📊 Statistik
-  // ========================================
-  function hitungStatistik() {
-    const data = JSON.parse(localStorage.getItem("orders")) || [];
-    const totalOrder = data.length;
-    const totalPendapatan = data.reduce((a,b)=>a+b.harga,0);
-    const pelanggan = [...new Set(data.map(o=>o.nama))].length;
-    localStorage.setItem("stats", JSON.stringify({ totalOrder, totalPendapatan, pelanggan }));
-  }
-
-  function tampilkanStatistik() {
-    const s = JSON.parse(localStorage.getItem("stats")) || { totalOrder:0, totalPendapatan:0, pelanggan:0 };
-    document.getElementById("statOrder").innerText = s.totalOrder;
-    document.getElementById("statPendapatan").innerText = "Rp" + s.totalPendapatan.toLocaleString("id-ID");
-    document.getElementById("statPelanggan").innerText = s.pelanggan;
-  }
-
-  // ========================================
-  // 💾 Load Admin Data
-  // ========================================
-  function loadAdminData() {
-    tampilkanStatistik();
-    tampilkanPromo();
-    tampilkanAdminReview();
-  }
-
-  // ========================================
-  // 💬 Admin Review Control
-  // ========================================
-  function tampilkanAdminReview() {
-    const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-    document.getElementById("adminReviewList").innerHTML = reviews.map((r,i)=>`<li><b>${r.nama}</b>: ${r.text} <button onclick="hapusReview(${i})">Hapus</button></li>`).join("");
-  }
-
-  function hapusReview(i) {
-    const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-    reviews.splice(i,1);
-    localStorage.setItem("reviews", JSON.stringify(reviews));
-    tampilkanReview();
-    tampilkanAdminReview();
-  }
-
-  // ========================================
-  // 📤 Export Data ke CSV
-  // ========================================
-  function exportCSV() {
-    const orders = JSON.parse(localStorage.getItem("orders")) || [];
-    if (!orders.length) return alert("Belum ada data!");
-    let csv = "Nama,Item,Jumlah,Harga,Tanggal\n";
-    orders.forEach(o=>{
-      csv += `${o.nama},${o.item},${o.jumlah},${o.harga},${o.tanggal}\n`;
-    });
-    const blob = new Blob([csv], { type: "text/csv" });
+  function exportData(){
+    const data = localStorage.getItem("reviews");
+    const blob = new Blob([data], {type: "text/csv"});
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "data_dafzx.csv";
+    a.download = "review_data.csv";
     a.click();
-    URL.revokeObjectURL(url);
   }
 
-  // ========================================
-  // 🚀 Inisialisasi Saat Load
-  // ========================================
-  window.onload = () => {
-    tampilkanPromo();
-    tampilkanReview();
-    updateLeaderboard();
-    tampilkanStatistik();
-  };
+  /* === ChatBot === */
+  const bot = document.getElementById("chatbot");
+  const chatInput = document.getElementById("chatInput");
+  const chatBody = document.getElementById("chatBody");
+  const adminBtn = document.querySelector(".admin-button");
+  adminBtn.addEventListener("dblclick",()=> bot.classList.toggle("active"));
+
+  function sendChat(){
+    const text = chatInput.value.trim();
+    if(!text) return;
+    chatBody.innerHTML += `<p><strong>Kamu:</strong> ${text}</p>`;
+    let reply = "Maaf, saya belum paham 😅";
+    if(text.toLowerCase().includes("harga")) reply = "Harga coin mulai dari Rp12.000 per 1M 💰";
+    if(text.toLowerCase().includes("promo")) reply = document.getElementById("promoText").innerText;
+    if(text.toLowerCase().includes("pesan")) reply = "Klik tombol 'Pesan Sekarang' di atas ya 😎";
+    chatBody.innerHTML += `<p><strong>Bot:</strong> ${reply}</p>`;
+    chatInput.value="";
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  /* === Promo Berjalan === */
+  const promoTexts = [
+    "🔥 Diskon 10% pakai kode DAFZX2025!",
+    "💸 Bayar via Dana / Gopay / Qris!",
+    "🎣 Joki Cepat, Aman, Terpercaya!"
+  ];
+  let promoIndex = 0;
+  setInterval(()=>{
+    promoIndex = (promoIndex + 1) % promoTexts.length;
+    document.getElementById("promoText").innerText = promoTexts[promoIndex];
+  },4000);
+
   </script>
 </body>
-      </html>
+  </html>
